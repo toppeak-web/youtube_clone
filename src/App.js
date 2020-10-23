@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+
 import './App.css';
+import VideoList from './components/video_lists/Video_list';
 
 function App() {
+  const [videos, serVideos] = useState([]);
+  
+
+  useEffect(()=>{
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch("https://www.googleapis.com//youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyB4FfyoH7pqexVLafezqj0B_1Q9A0Nytj4",
+     requestOptions)
+      .then(response => response.json())
+      .then(result => serVideos(result.items))
+      .catch(error => console.log('error', error));
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <VideoList videos={videos}/>
+    </>
   );
 }
 
