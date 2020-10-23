@@ -7,7 +7,8 @@ function VideoItems({ video: { snippet } }) {  //props.video.snippet
     let Y_year = asd.substr(0,4)
     let Y_month = asd.substr(5,2)
     let Y_day = asd.substr(8,2)
-    let Y_hours = asd.substr(11,2)
+    // let Y_hours = asd.substr(11,2)
+    
     return (
         <>
         <div className={styles.ytb_ui}>
@@ -16,11 +17,15 @@ function VideoItems({ video: { snippet } }) {  //props.video.snippet
             </div>
             <div className={styles.ui_content}>
                 <div className={styles.content_title}>
-                    Title: {snippet.title}
+                    {console.log()}
+                    Title: {`${snippet.title.length > 45 ? snippet.title.slice(0, 45)+`...`:snippet.title}`}
                 </div>
                 <div className={styles.content_channel}>
                     <span className={styles.channel_name}>
-                        Channel: {snippet.channelTitle} {snippet.title} {/*  <i class={styles.fa_check_circle}></i> */}
+                        Channel: {`${snippet.channelTitle.length > 50 ? snippet.channelTitle.substr(0, 50)+`...`:snippet.channelTitle}`} {/*  <i class={styles.fa_check_circle}></i> */}
+                    </span>
+                    <span className={styles.content_description}>
+                    description: {`${snippet.description.length > 50 ? snippet.description.substr(0, 50)+`...`:snippet.description}`}
                     </span>
                     <span className={styles.channel_video_create_time}>
                         {/* {snippet.publishedAt} */}
