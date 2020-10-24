@@ -2,44 +2,53 @@ import React from 'react';
 import styles from "./Video_ltem.module.css"
 
 function VideoItems({ video: { snippet } }) {  //props.video.snippet
-    let d = new Date();
     let asd = snippet.publishedAt
-    let Y_year = asd.substr(0,4)
-    let Y_month = asd.substr(5,2)
-    let Y_day = asd.substr(8,2)
-    // let Y_hours = asd.substr(11,2)
-    
+
+    function timeForToday(value) {
+        const today = new Date();
+        const timeValue = new Date(value);
+
+        const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+        
+        if (betweenTime < 1) return '방금전';
+        if (betweenTime < 60) {
+            return `${betweenTime}분전`;
+        }
+
+        const betweenTimeHour = Math.floor(betweenTime / 60);
+        if (betweenTimeHour < 24) {
+            return `${betweenTimeHour}시간전`;
+        }
+
+        const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+        if (betweenTimeDay < 365) {
+            return `${betweenTimeDay}일전`;
+        }
+
+        return `${Math.floor(betweenTimeDay / 365)}년전`;
+ }
+   
     return (
         <>
+        <p className="sub"></p>
         <div className={styles.ytb_ui}>
             <div className={styles.ui_thumb}>
-                <img src={snippet.thumbnails.medium.url} alt="" className={styles.thumb_img} />
+                <img src={snippet.thumbnails.medium.url} alt={snippet.title} className={styles.thumb_img} />
             </div>
             <div className={styles.ui_content}>
                 <div className={styles.content_title}>
-                    {console.log()}
+                    
                     Title: {`${snippet.title.length > 45 ? snippet.title.slice(0, 45)+`...`:snippet.title}`}
                 </div>
                 <div className={styles.content_channel}>
                     <span className={styles.channel_name}>
                         Channel: {`${snippet.channelTitle.length > 50 ? snippet.channelTitle.substr(0, 50)+`...`:snippet.channelTitle}`} {/*  <i class={styles.fa_check_circle}></i> */}
                     </span>
-                    <span className={styles.content_description}>
+                    <span className={styles.content_description} title={snippet.description}>
                     description: {`${snippet.description.length > 50 ? snippet.description.substr(0, 50)+`...`:snippet.description}`}
                     </span>
                     <span className={styles.channel_video_create_time}>
-                        {/* {snippet.publishedAt} */}
-                        {d.getFullYear() - Number(Y_year)}년
-                        {1+ d.getMonth() - Number(Y_month)}월
-                        {d.getDate() - Number(Y_day)}일 전
-                        {/* {d.getHours() - Number(Y_hours)}시
-                        {console.log(Number(Y_year))}
-                        {console.log(Y_month)}
-                        {console.log(Y_day)}
-                        {console.log(Y_hours)}
-                        {console.log(snippet.publishedAt)}
-                        {console.log(1)}
-                        {console.log(1+ d.getDate())} */}
+                        {timeForToday(asd)}
                     </span>
                     
                 </div>
