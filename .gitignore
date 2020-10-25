@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .vscode
+# Api key
+.env
 
 # testing
 /coverage
