@@ -1,8 +1,13 @@
 .ytb_ui {
     display: flex;
     margin-bottom: 10px;
-    width: 100%;
     float: left;
+}
+.ytb_ui.grid{
+    width: 100%;
+}
+.ytb_ui.list{
+    width: 100%;
 }
 
 .ytb_ui .ui_thumb {

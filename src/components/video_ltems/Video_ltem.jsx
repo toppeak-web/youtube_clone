@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from "./Video_ltem.module.css"
 
-function VideoItems({ video: { snippet } }) {  //props.video.snippet
+function VideoItems({ video , video: { snippet }, onVideoClick}) {  //props.video.snippet
     let asd = snippet.publishedAt
+
+    // const displayType = display === "list" ? styles.list : styles.grid
 
     function timeForToday(value) {
         const today = new Date();
@@ -31,7 +33,7 @@ function VideoItems({ video: { snippet } }) {  //props.video.snippet
     return (
         <>
         <p className="sub"></p>
-        <div className={styles.ytb_ui}>
+        <div className={`${styles.ytb_ui}`} onClick={() => onVideoClick(video)}>
             <div className={styles.ui_thumb}>
                 <img src={snippet.thumbnails.medium.url} alt={snippet.title} className={styles.thumb_img} />
             </div>
