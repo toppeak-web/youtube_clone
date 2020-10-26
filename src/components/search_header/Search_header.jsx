@@ -1,7 +1,7 @@
 
 import styles from "./Search_header.module.css"
 
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar({onSearch})  {
+function SearchAppBar({onSearch})  {
   const classes = useStyles();
   const inputRef = useRef();
   const handleSearch = (e) =>{
@@ -77,7 +77,7 @@ export default function SearchAppBar({onSearch})  {
       console.log("onKeyPress")
       handleSearch(e)
   }
-
+  console.log("head")
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -114,7 +114,7 @@ export default function SearchAppBar({onSearch})  {
     </div>
   );
 }
-
+export default memo(SearchAppBar)
 // const SearchHeader = () => {
 //     return (
 //         <header className={styles.header}>

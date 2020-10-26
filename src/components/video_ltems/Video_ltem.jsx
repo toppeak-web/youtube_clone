@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from "./Video_ltem.module.css"
 
 function VideoItems({ video , video: { snippet }, onVideoClick}) {  //props.video.snippet
@@ -62,4 +62,4 @@ function VideoItems({ video , video: { snippet }, onVideoClick}) {  //props.vide
 }
 
 
-export default VideoItems;
+export default memo(VideoItems);

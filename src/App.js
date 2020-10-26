@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import './App.css';
 import VideoList from './components/video_lists/Video_list';
@@ -11,11 +11,12 @@ function App({ yp }) {
   const selectVideo = (video) => {
     setSelectedVideo(video)
   }
-  const search = q => {
+  const search = useCallback(q => {
+    setSelectedVideo(null)
     yp
       .search(q)//
       .then(videos => setVideos(videos))
-  }
+  }, [])
 
   useEffect(() => {
     yp
