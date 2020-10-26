@@ -2,13 +2,14 @@
     display: flex;
     margin-bottom: 10px;
     float: left;
+    width: 100%;
 }
-.ytb_ui.grid{
+/* .ytb_ui.grid{
     width: 100%;
 }
 .ytb_ui.list{
     width: 100%;
-}
+} */
 
 .ytb_ui .ui_thumb {
     width: 160px;

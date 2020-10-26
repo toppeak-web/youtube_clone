@@ -5,10 +5,11 @@
   display: flex;
 }
 .detail{
-  flex: 1 1 80%;
+  flex: 1 1 70%;
 }
 .list{
-  flex: 1 1 30%;
+  flex: 1 1 10%;
+  min-width: 30%;
 }
 
 
