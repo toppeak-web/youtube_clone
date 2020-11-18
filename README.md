@@ -1,5 +1,5 @@
 ## 배포 https://toppeak-web.github.io/youtube_clone/build/
-#### 기술 : [react](https://reactjs.org/), restApi, Material-ui, postcss 등
+#### 기술 : [react](https://reactjs.org/), [restApi](https://ko.wikipedia.org/wiki/REST), [Material-ui](https://material-ui.com/), [postcss](https://postcss.org/) 등
 ## 메인화면 
 #### 메인화면은 유튜브의 인기 동영상 순위 입니다.
 <img src=https://user-images.githubusercontent.com/60978437/99555449-b1baa600-2a03-11eb-9e61-24bdfb7f13e9.png width=49%>
